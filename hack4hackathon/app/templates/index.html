@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Risk Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Diabetes Risk Prediction</h1>
+            <p class="subtitle">Enter the patient details below to estimate diabetes risk.</p>
+        </header>
+
+        <form id="prediction-form" action="/predict" method="POST">
+            <div class="form-row">
+                <label for="pregnancies">Pregnancies</label>
+                <input type="number" step="any" name="pregnancies" placeholder="e.g., 2" required>
+            </div>
+            <div class="form-row">
+                <label for="glucose">Glucose</label>
+                <input type="number" step="any" name="glucose" placeholder="e.g., 120" required>
+            </div>
+            <div class="form-row">
+                <label for="bloodpressure">Blood Pressure</label>
+                <input type="number" step="any" name="bloodpressure" placeholder="e.g., 70" required>
+            </div>
+            <div class="form-row">
+                <label for="skinthickness">Skin Thickness</label>
+                <input type="number" step="any" name="skinthickness" placeholder="e.g., 25" required>
+            </div>
+            <div class="form-row">
+                <label for="insulin">Insulin</label>
+                <input type="number" step="any" name="insulin" placeholder="e.g., 80" required>
+            </div>
+            <div class="form-row">
+                <label for="bmi">BMI</label>
+                <input type="number" step="any" name="bmi" placeholder="e.g., 28.5" required>
+            </div>
+            <div class="form-row">
+                <label for="diabetespedigreefunction">Diabetes Pedigree Function</label>
+                <input type="number" step="any" name="diabetespedigreefunction" placeholder="e.g., 0.45" required>
+            </div>
+            <div class="form-row">
+                <label for="age">Age</label>
+                <input type="number" step="any" name="age" placeholder="e.g., 35" required>
+            </div>
+
+            <button type="submit">Predict Risk</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <strong>Prediction Result:</strong> {{ prediction }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
